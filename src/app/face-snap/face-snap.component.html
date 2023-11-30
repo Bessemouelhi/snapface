@@ -1,0 +1,35 @@
+<div class="card face-snap-card" [ngClass]="{ snapped: liked }">
+  <div class="card-body">
+    <h2 class="card-title">{{ faceSnap.title | uppercase }}</h2>
+    <p class="card-text">
+      Mise en ligne le
+      {{ faceSnap.createdDate | date: 'd MMMM yyyy' }}
+      <!-- {{ faceSnap.createdDate.toLocaleString("fr-fr", { month: "long" }) }}
+      {{ faceSnap.createdDate.getFullYear() }} -->
+    </p>
+    <p>{{ 4346234.36482937 | number: '1.2-4' }}</p>
+    <p>{{ 47 | percent: '1.0-2' }}</p>
+    <p>{{ 25989.99 | currency: 'EUR' }}</p>
+    <img
+      class="card-img-top"
+      [src]="faceSnap.imageUrl"
+      [alt]="faceSnap.title"
+    />
+    <p class="card-text">{{ faceSnap.description }}</p>
+    <p *ngIf="faceSnap.location" class="card-text">
+      Photo prise à {{ faceSnap.location }}
+    </p>
+    <p class="card-text">
+      <button class="btn btn-primary" (click)="onAddSnap()">
+        {{ btnText }}
+      </button>
+      <span
+        [ngStyle]="{
+          color: 'rgb(0, ' + faceSnap.snaps + ', 0)',
+          'font-style': 'italic'
+        }"
+        >🤌 {{ faceSnap.snaps }}</span
+      >
+    </p>
+  </div>
+</div>
